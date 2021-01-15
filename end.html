@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="end" class="flex-center flex-column">
+            <h1 id="finalScore"></h1>
+            <form>
+                <input 
+                    type="text" 
+                    name="initials" 
+                    id="initials" 
+                    placeholder="initials"
+                />
+                <button 
+                    type="submit" 
+                    class="btn" 
+                    id="saveScore" 
+                    onClick="saveHighScore(event)"
+                    disabled
+                >
+                    Save Score
+                </button>
+            </form>
+            <a class="btn" href="index.html">Homepage</a>
+        </div>
+    </div>
+    <script>
+        const initials = document.getElementById('initials');
+        const saveScore = document.getElementById('saveScore');
+        const finalScore = document.getElementById('finalScore');
+        const mostRecentScore = localStorage.getItem('mostRecentScore');
+        finalScore.innerText = mostRecentScore;
+
+        initials.addEventListener('keyup', () => {
+            console.log(initials.value);
+
+            saveScore.disabled = !initials.value;
+        });
+
+        saveHighScore = e => {
+            console.log('clicked on the save button');
+            e.preventDefault();
+        }
+    </script>
+</body>
+</html>
